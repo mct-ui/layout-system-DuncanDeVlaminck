@@ -1,22 +1,29 @@
 /*------------------------------------*\
   #FONTS
 \*------------------------------------*/
-
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
-
 /*
     Generic: Page
     ---
     Global page styles
 */
-
 html {
     font-size: 16px;
     line-height: 1.5;
     font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
     color: #111;
+    box-sizing: border-box;
+}
+
+*, *:before, :after {
+    box-sizing: inherit;
+}
+
+body {
+    max-width: 42em;
+    margin: 0 auto;
 }
 
 /*
@@ -25,13 +32,6 @@ html {
  *
  * Customize the background color to match your design.
  */
-
-::-moz-selection {
-    background: #e85e00;
-    color: white;
-    text-shadow: none;
-}
-
 ::selection {
     background: #e85e00;
     color: white;
@@ -41,13 +41,11 @@ html {
 /*------------------------------------*\
   #Elements
 \*------------------------------------*/
-
 /*
     Elements: Images
     ---
     Default markup for images to make them responsive
 */
-
 img {
     max-width: 100%;
     vertical-align: top;
@@ -58,7 +56,6 @@ img {
     ---
     Default markup for typographic elements
 */
-
 h1 {
     font-family: "Times New Roman", serif;
     font-size: 36px;
@@ -160,35 +157,214 @@ a:focus {
 /*------------------------------------*\
   #OBJECTS
 \*------------------------------------*/
-
 /*
     Object: Object name
     ---
     Object description
 */
+.o-row {
+    padding: 24px 24px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.o-row--primary {
+    background-color: #e85e00;
+    color: white;
+}
+
+.o-row--dark {
+    color: white;
+    background-color: #111;
+}
+
+@media (min-width: 768px) {
+    .o-row--lg {
+        padding: 48px 48px 24px;
+    }
+}
+
+.o-container {
+    /*max-width: 1440px;*/
+    /*naar em: 1440 / font-size (16px in dit geval)*/
+    max-width: 90em;
+    margin: 0 auto;
+}
+
+/*object layout*/
+.o-layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.o-layout__item {
+    width: 100%;
+}
+
+/* gutter modifiers, these affect o-layout__item too */
+.o-layout--gutter {
+    margin: 0 -12px;
+}
+
+.o-layout--gutter>.o-layout__item {
+    padding: 0 12px;
+}
+
+.o-layout--gutter-sm {}
+
+.o-layout--gutter-sm>.o-layout__item {}
+
+.o-layout--gutter-lg {}
+
+.o-layout--gutter-lg>.o-layout__item {}
+
+/* reverse horizontal row modifier */
+.o-layout--row-reverse {}
+
+/* Horizontal alignment modifiers*/
+.o-layout--justify-start {
+    justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+    justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+    justify-content: center;
+}
+
+.o-layout--justify-space-around {
+    justify-content: space-around;
+}
+
+.o-layout--justify-space-between {
+    justify-content: space-between;
+}
+
+/* Vertical item alignment modifiers */
+.o-layout--align-start {
+    align-items: flex-start;
+}
+
+.o-layout--align-end {
+    align-items: flex-end;
+}
+
+.o-layout--align-center {
+    align-items: center;
+}
+
+.o-layout--align-baseline {
+    align-items: baseline;
+}
+
+/* Vertical content alignment modifiers. Only work if there is one than one flex item */
+.o-layout--align-content-start {}
+
+.o-layout--align-content-end {}
+
+.o-layout--align-content-center {}
+
+.o-layout--align-content-space-around {}
+
+.o-layout--align-content-space-between {}
 
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
-
 /*
     Component: Component name
     ---
     Component description
 */
+.c-layout-block {
+    background-color: LightGrey;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.c-layout-block--ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
-
 /*
     Utilities: max-width
     ---
     Utility classes to put specific max widths onto elements.
 */
-
 .u-max-width-sm {
     max-width: 36em;
+}
+
+.u-width-auto {
+    width: auto;
+}
+
+.u-1-of-2 {
+    width: 50%;
+}
+
+.u-1-of-3 {
+    width: 33.3333333333%;
+}
+
+.u-2-of-3 {
+    width: 66.6666666667%;
+}
+
+.u-1-of-4 {
+    width: 25%;
+}
+
+.u-3-of-4 {
+    width: 75%;
+}
+
+.u-1-of-5 {
+    width: 20%;
+}
+
+.u-2-of-5 {
+    width: 40%;
+}
+
+.u-3-of-5 {
+    width: 60%;
+}
+
+.u-4-of-5 {
+    width: 80%;
+}
+
+.u-1-of-6 {
+    width: 16.6666666667%;
+}
+
+.u-5-of-6 {
+    width: 83.3333333333%;
+}
+
+@media (min-width: 576px) {
+    .u-1-of-2-bp1 {}
+}
+
+@media (min-width: 768px) {
+    .u-1-of-2-bp2 {}
+}
+
+@media (min-width: 992px) {
+    .u-1-of-2-bp3 {}
+}
+
+@media (min-width: 1200px) {
+    .u-1-of-2-bp4 {}
 }
 
 /*
@@ -196,11 +372,29 @@ a:focus {
     ---
     Utility description
 */
+.u-max-width-sm {
+    max-width: 36em;
+}
+
+.u-max-width-md {
+    max-width: 45em;
+}
+
+.u-max-width-lg {
+    max-width: 60em;
+}
+
+.u-max-width-xl {
+    max-width: 75em;
+}
+
+.u-max-width-none {
+    max-width: none;
+}
 
 /*------------------------------------*\
   #MEDIA
 \*------------------------------------*/
-
 /*
     Media Queries
     ---
@@ -208,35 +402,29 @@ a:focus {
     These examples override the primary ('mobile first') styles.
     USE THEM INLINE!
 */
-
 /* Extra small devices (portrait phones, less than 576px)
    No media query since this is the default in mobile first design
 */
-
 /* Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {}
 */
-
 /* Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {}
 */
-
 /* Large devices (landscape tablets, desktops, 992px and up)
 @media (min-width: 992px) {}
 */
-
 /* Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {}
 */
-
 /*
     Print styles.
     ---
     Inlined to avoid the additional HTTP request:
     http://www.phpied.com/delay-loading-your-print-css/
 */
-
 @media print {
+
     *,
     *:before,
     *:after {
@@ -247,16 +435,20 @@ a:focus {
         box-shadow: none !important;
         text-shadow: none !important;
     }
+
     a,
     a:visited {
         text-decoration: underline;
     }
+
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: " ("attr(href) ")";
     }
+
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: " ("attr(title) ")";
     }
+
     /*
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
@@ -265,14 +457,17 @@ a:focus {
     a[href^="javascript:"]:after {
         content: "";
     }
+
     pre {
         white-space: pre-wrap !important;
     }
+
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
+
     /*
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
@@ -280,16 +475,19 @@ a:focus {
     thead {
         display: table-header-group;
     }
+
     tr,
     img {
         page-break-inside: avoid;
     }
+
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
+
     h2,
     h3 {
         page-break-after: avoid;
